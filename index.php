@@ -129,6 +129,7 @@ if (isset($_POST['code'])) {
         <link rel="stylesheet" type="text/css" href="styles.css" />
         <script src="jquery-1.9.1.min.js"></script>
         <script src="ace/ace.js" charset="utf-8"></script>
+        <script src="ace/ext-language_tools.js" charset="utf-8"></script>
         <script src="ace/mode-php.js" charset="utf-8"></script>
         <script src="php-console.js"></script>
         <script>

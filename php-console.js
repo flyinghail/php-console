@@ -148,6 +148,8 @@
         $('#' + options.editor).replaceWith('<div id="' + options.editor + '" class="' + options.editor + '"></div>');
         $('#' + options.editor).text(code);
 
+        
+        ace.require("ace/ext/language_tools");
         editor = ace.edit(options.editor);
 
         editor.focus();
@@ -156,6 +158,12 @@
         // set mode
         PhpMode = require("ace/mode/php").Mode;
         editor.getSession().setMode(new PhpMode());
+
+        editor.setOptions({
+            enableBasicAutocompletion: true,
+            enableSnippets: true,
+            enableLiveAutocompletion: true
+        });
 
         // tab size
         if (options.tabsize) {
