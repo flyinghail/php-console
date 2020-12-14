@@ -11,8 +11,5 @@ return array(
     // bootstrap file, if defined this file will be included before
     // the code entered by the user is evaluated. any variables and classes
     // defined here will be accessible by the eval'd code
-    'bootstrap' => null,
-
-    // maximun execution time for melody scripts
-    'melody_timeout' => 600,    
+    'bootstrap' => null,    
 );

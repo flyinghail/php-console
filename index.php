@@ -12,9 +12,6 @@ $defaults = array(
     // the code entered by the user is evaluated. any variables and classes
     // defined here will be accessible by the eval'd code
     'bootstrap' => null,
-
-    // maximun execution time for melody scripts
-    'melody_timeout' => 60,
 );
 
 if (file_exists(__DIR__.'/config.php')) {
@@ -44,13 +41,12 @@ if (!in_array('*', $options['ip_whitelist'], true) &&
     die('ERR/401 Go Away');
 }
 
-if (!file_exists('vendor/autoload.php')) {
-    die('Missing vendor/autoload.php file. Did you forget to run "composer install" ?');
+if (file_exists('vendor/autoload.php')) {
+    require 'vendor/autoload.php';
 }
 
 define('PHP_CONSOLE_VERSION', '1.5.0-dev');
 require 'krumo/class.krumo.php';
-require 'vendor/autoload.php';
 
 ini_set('log_errors', 0);
 ini_set('display_errors', 1);
