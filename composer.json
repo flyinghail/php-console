@@ -13,8 +13,7 @@
         }
     ],
     "require": {
-        "php": ">=5.2.0",
-        "sensiolabs/melody": "@dev"
+        "php": ">=5.2.0"
     },
     "extra": {
         "branch-alias": {

@@ -50,7 +50,6 @@ if (!file_exists('vendor/autoload.php')) {
 
 define('PHP_CONSOLE_VERSION', '1.5.0-dev');
 require 'krumo/class.krumo.php';
-require 'lib/MelodyPlugin.php';
 require 'vendor/autoload.php';
 
 ini_set('log_errors', 0);
@@ -73,9 +72,6 @@ function runCode($__source_code, $__bootstrap_file)
 }
 
 if (isset($_POST['code'])) {
-    if (get_magic_quotes_gpc()) {
-        $code = stripslashes($code);
-    }
 
     $code = $_POST['code'];
 
@@ -99,22 +95,10 @@ if (isset($_POST['code'])) {
     $memBefore = memory_get_usage(true);
     $start = microtime(true);
 
-    $melodyPlugin = new MelodyPlugin();
-    $melodyPlugin->setTimeout($options['melody_timeout']);
-    if ($melodyPlugin->isMelodyScript($code)) {
-        if ($melodyPlugin->isScriptingSupported()) {
-            // make sure krumo class is available in the melody script
-            $code = str_replace('CONFIG;', "CONFIG;\nrequire 'krumo/class.krumo.php';", $code );
-            $melodyPlugin->runScript($code, $options['bootstrap']);
-        } else {
-            throw new Exception('php-console misses required dependencies to run melody scripts.');
-        }
-    } else {
-        // Important: replace only line by line, so the generated source lines will map 1:1 to the initial user input!
-        $code = preg_replace('{^\s*<\?(php)?\s*}i', '', $code);
+    // Important: replace only line by line, so the generated source lines will map 1:1 to the initial user input!
+    $code = preg_replace('{^\s*<\?(php)?\s*}i', '', $code);
 
-        runCode($code, $options['bootstrap']);
-    }
+    runCode($code, $options['bootstrap']);
 
     // compare with peak, because regular memory could be free'd already
     $end = microtime(true);
