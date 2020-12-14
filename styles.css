@@ -96,16 +96,6 @@ a {
     border-bottom-right-radius: 5px;
 }
 
-.statusbar .copy {
-    margin-left: 50px;
-    display: none;
-}
-#clippy {
-    position: relative;
-    top: 2px;
-    left: 0;
-}
-
 /* ace-editor requires to define styles by id (specificity) */
 .editor#editor {
     width: 100%;

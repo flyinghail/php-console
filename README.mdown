@@ -105,4 +105,3 @@ PHP Console bundles the following libraries, and the work of their respective au
 - [krumo](http://krumo.sourceforge.net/) licensed under the LGPL
 - [jQuery](http://jquery.com) licensed under the MIT License
 - [ACE](http://ace.ajax.org/) licensed under the MPL/LGPL/GPL Licenses
-- [Clippy](https://github.com/mojombo/clippy) licensed under the MIT License

@@ -16,7 +16,7 @@
 (function (require, $, ace) {
     "use strict";
 
-    var updateStatusBar, prepareClippyButton, refreshKrumoState, handleSubmit, initializeAce, handleAjaxError,
+    var updateStatusBar, refreshKrumoState, handleSubmit, initializeAce, handleAjaxError,
         options, editor;
     options = {
         tabsize: 4,
@@ -29,20 +29,6 @@
     updateStatusBar = function (e) {
         var cursor_position = editor.getCursorPosition();
         $('.statusbar .position').text('Line: ' + (1 + cursor_position.row) + ', Column: ' + cursor_position.column);
-    };
-
-    /**
-     * prepares a clippy button for clipboard access
-     */
-    prepareClippyButton = function (e) {
-        var selection = editor.getSession().doc.getTextRange(editor.getSelectionRange());
-        if (!selection) {
-            $('.statusbar .copy').hide();
-            return;
-        }
-        $('#clippy embed').attr('FlashVars', 'text=' + selection);
-        $('#clippy param[name="FlashVars"]').attr('value', 'text=' + selection);
-        $('.statusbar .copy').html($('.statusbar .copy').html()).show();
     };
 
     /**
@@ -174,10 +160,7 @@
         }
 
         // events
-        editor.getSession().selection.on('changeCursor', updateStatusBar);
-        if (window.navigator.userAgent.indexOf('Opera/') === 0) {
-            editor.getSession().selection.on('changeSelection', prepareClippyButton);
-        }
+        editor.getSession().getSelection().on('changeCursor', updateStatusBar);
 
         // reset button
         if (window.localStorage) {

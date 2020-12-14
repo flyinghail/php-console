@@ -127,7 +127,7 @@ if (isset($_POST['code'])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Debug Console</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />
-        <script src="jquery-1.9.1.min.js"></script>
+        <script src="jquery-3.5.1.min.js"></script>
         <script src="ace/ace.js" charset="utf-8"></script>
         <script src="ace/ext-language_tools.js" charset="utf-8"></script>
         <script src="ace/mode-php.js" charset="utf-8"></script>
@@ -147,27 +147,6 @@ if (isset($_POST['code'])) {
                     </div>
                         <div class="statusbar">
                             <span class="position">Line: 1, Column: 1</span>
-                            <span class="copy">
-                                Copy selection: <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="110" height="14" id="clippy">
-                                    <param name="movie" value="clippy/clippy.swf"/>
-                                    <param name="allowScriptAccess" value="always" />
-                                    <param name="quality" value="high" />
-                                    <param name="scale" value="noscale" />
-                                    <param NAME="FlashVars" value="text=">
-                                    <param name="bgcolor" value="#E8E8E8">
-                                    <embed src="clippy/clippy.swf"
-                                           width="110"
-                                           height="14"
-                                           name="clippy"
-                                           quality="high"
-                                           allowScriptAccess="always"
-                                           type="application/x-shockwave-flash"
-                                           pluginspage="http://www.macromedia.com/go/getflashplayer"
-                                           FlashVars="text="
-                                           bgcolor="#E8E8E8"
-                                    />
-                                </object>
-                            </span>
                             <a href="" class="reset">Reset</a>
                             <input type="text" name="inputFileName" id="inputFileNameToSaveAs" class="ls-input" value="<?php echo (isset($_POST['inputFileName']) ? htmlentities($_POST['inputFileName'], ENT_QUOTES, 'UTF-8') : "console-".date("Y-m-d_H:i:s").".php")?>">
                             <a href="#" class="save">Save</a>
